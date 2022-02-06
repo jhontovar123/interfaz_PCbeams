@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 from pickle import load
-import joblib
+#import joblib
 import pickle
 import numpy as np
 import math
