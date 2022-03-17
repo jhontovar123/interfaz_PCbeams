@@ -1,1 +1,1 @@
-web: gunicorn interfaz.py:streamlit
+web: gunicorn interfaz:streamlit
