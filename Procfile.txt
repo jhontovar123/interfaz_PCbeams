@@ -1,1 +1,1 @@
-web: ps1 setup.ps1 && streamlit run interfaz.py
+web: gunicorn interfaz.py:streamlit
