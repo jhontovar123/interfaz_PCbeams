@@ -1,1 +1,1 @@
-web: gunicorn interfaz:app
+web: sh setup.sh && streamlit run interfaz.py
