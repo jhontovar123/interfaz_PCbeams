@@ -1,1 +1,1 @@
-web: gunicorn interfaz:streamlit
+web: gunicorn interfaz:app
