@@ -170,9 +170,9 @@ st.table(cla_sca)
 
 ##Regression
 Load_pred_reg=loaded_model_reg.predict(reg_sca).item()
-V_test=np.exp(Load_pred_reg)*np.exp(reg_sca[0,1])*np.exp(reg_sca[0,0])/1000
+V_test=np.exp(Load_pred_reg)*np.exp(reg[0,1])*np.exp(reg[0,0])/1000
 
-##Classification
+##Classification  
 Load_pred_cla=loaded_model_cla.predict(cla_sca).item()
 resultado=Load_pred_cla
 res=str()
