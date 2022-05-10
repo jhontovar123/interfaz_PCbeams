@@ -7,11 +7,12 @@ import numpy as np
 import math
 from PIL import Image
 import os
+from sklearn.preprocessing import StandardScaler
 #from config.definitions import ROOT_DIR
 
 #Indication to run interfaz in a localhost
 #1 open the terminal cmd and change root direcory to file directory
-#2 write this: streamlit run interfaz_streamlit.py --server.port=9876
+#2 write this: streamlit run interfaz.py --server.port=9876
 
 
 PROJECT_ROOT_DIR = "."
@@ -42,17 +43,17 @@ st.image(image)
 def user_input_features():
     bw = st.sidebar.slider('bw (mm)', min_value=25, max_value=375, step=10)
     D = st.sidebar.slider('D (mm)', min_value=150, max_value=1600, step=50)
-    a_deff = st.sidebar.slider('a/Deff', min_value=0.0, max_value=8.0, step=0.5)
-    rho_l = st.sidebar.slider('rho_l', min_value=0.0, max_value=1.0, step=0.1)
-    rho_lp = st.sidebar.slider('rho_lp', min_value=0.01, max_value=0.1, step=0.01) 
-    rho_t = st.sidebar.slider('rho_t', min_value=0.0, max_value=0.1, step=0.01) 
-    fc = st.sidebar.slider('fc (MPa)', min_value=10, max_value=120, step=10)
-    fy = st.sidebar.slider('fy (MPa)', min_value=0, max_value=900, step=50)
-    fyt = st.sidebar.slider('fyt (MPa)', min_value=0, max_value=900, step=50) 
+    a_deff = st.sidebar.slider('a/Deff', min_value=0.4, max_value=8.0, step=0.2)
+    rho_l = st.sidebar.slider('rho_l', min_value=0.00, max_value=0.2, step=0.01)
+    rho_lp = st.sidebar.slider('rho_lp', min_value=0.001, max_value=0.06, step=0.001) 
+    rho_t = st.sidebar.slider('rho_t', min_value=0.0, max_value=0.05, step=0.001) 
+    fc = st.sidebar.slider('fc (MPa)', min_value=10, max_value=120, step=5)
+    fy = st.sidebar.slider('fy (MPa)', min_value=0, max_value=900, step=10)
+    fyt = st.sidebar.slider('fyt (MPa)', min_value=0, max_value=900, step=10) 
     fpy = st.sidebar.slider('fpy (MPa)', min_value=600, max_value=4400, step=20) 
-    fpu = st.sidebar.slider('fpu (MPa)', min_value=900, max_value=5200, step=50) 
+    fpu = st.sidebar.slider('fpu (MPa)', min_value=900, max_value=5200, step=20) 
     fpo = st.sidebar.slider('fpo (MPa)', min_value=20, max_value=1760, step=20) 
-    Fpo = st.sidebar.slider('Fpo (N)', min_value=3700, max_value=10140000, step=3000) 
+    Fpo = st.sidebar.slider('Fpo (N)', min_value=3700, max_value=10140000, step=1000) 
 
     data = {'bw (mm)': bw,
             'D (mm)': D,
@@ -149,18 +150,30 @@ a_deff1_log=np.log(a_deff1)
 rholp_fpu_fc_log=np.log(rholp_fpu_fc)
 eta_p_log=np.log(eta_p)
 
+var_names_reg = ['bw_D', 'fc', 'fpo/fpu', "a/Deff", 'rhot_fyt/fc', 'rhol_fy/fc', 'rholp_fpu/fc','eta_p']
+var_names_cla = ['bw_D', 'sqrt_fc', 'fpo/fpu', "a/Deff",'eta_p', 'lambda', 'rhot_fyt/fc']
 #Definning input to model predictions
 reg=np.array([[bw_D_log,fc2_log,fpo_fpu,a_deff1_log,rhot_fyt_fc,rhol_fy_fc,rholp_fpu_fc_log,eta_p_log]])
-
 cla=np.array([[bw_D,sq_fc,fpo_fpu,a_deff1,eta_p,lamb,rhot_fyt_fc]])
+# Escalando los inputs (forma correcta para los inputs)
+s_reg = np.load('std_scale_reg.npy')
+m_reg = np.load('mean_scale_reg.npy')
 
-#Predictions
+s_cla = np.load('std_scale_cla.npy')
+m_cla = np.load('mean_scale_cla.npy')
+
+reg_sca=pd.DataFrame((reg-m_reg)/s_reg,index=[0])
+cla_sca=pd.DataFrame((cla-m_cla)/s_cla,index=[0])
+
+st.table(reg_sca)
+st.table(cla_sca)
+
 ##Regression
-Load_pred_reg=loaded_model_reg.predict(reg).item()
-V_test=np.exp(Load_pred_reg)*np.exp(reg[0,1])*np.exp(reg[0,0])/1000
+Load_pred_reg=loaded_model_reg.predict(reg_sca).item()
+V_test=np.exp(Load_pred_reg)*np.exp(reg_sca[0,1])*np.exp(reg_sca[0,0])/1000
 
 ##Classification
-Load_pred_cla=loaded_model_cla.predict(cla).item()
+Load_pred_cla=loaded_model_cla.predict(cla_sca).item()
 resultado=Load_pred_cla
 res=str()
 if resultado==0:
