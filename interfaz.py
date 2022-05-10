@@ -165,9 +165,6 @@ m_cla = np.load('mean_scale_cla.npy')
 reg_sca=pd.DataFrame((reg-m_reg)/s_reg,index=[0])
 cla_sca=pd.DataFrame((cla-m_cla)/s_cla,index=[0])
 
-st.table(reg_sca)
-st.table(cla_sca)
-
 ##Regression
 Load_pred_reg=loaded_model_reg.predict(reg_sca).item()
 V_test=np.exp(Load_pred_reg)*np.exp(reg[0,1])*np.exp(reg[0,0])/1000
