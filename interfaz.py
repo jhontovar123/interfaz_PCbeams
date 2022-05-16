@@ -24,7 +24,7 @@ with open(model_file, 'rb') as f:
     loaded_model_reg = pickle.load(f)
 
 #Recovering classifcation model
-model_file = os.path.join(OutModel_PATH, "final_model_PCbeams_class.pkl")
+model_file = os.path.join(OutModel_PATH, "final_model_PCbeams_class_8f.pkl")
 with open(model_file, 'rb') as f:
     loaded_model_cla = pickle.load(f)
 
@@ -159,8 +159,8 @@ cla=np.array([[bw_D,sq_fc,fpo_fpu,a_deff1,eta_p,lamb,rhot_fyt_fc]])
 s_reg = np.load('std_scale_reg.npy')
 m_reg = np.load('mean_scale_reg.npy')
 
-s_cla = np.load('std_scale_cla.npy')
-m_cla = np.load('mean_scale_cla.npy')
+s_cla = np.load('std_scale_cla_8f.npy')
+m_cla = np.load('mean_scale_cla_8f.npy')
 
 reg_sca=pd.DataFrame((reg-m_reg)/s_reg,index=[0])
 cla_sca=pd.DataFrame((cla-m_cla)/s_cla,index=[0])
