@@ -162,6 +162,7 @@ m_reg = np.load('mean_scale_reg.npy')
 s_cla = np.load('std_scale_cla_8f.npy')
 m_cla = np.load('mean_scale_cla_8f.npy')
 
+st.write(s_cla)
 reg_sca=pd.DataFrame((reg-m_reg)/s_reg,index=[0])
 cla_sca=pd.DataFrame((cla-m_cla)/s_cla,index=[0])
 
