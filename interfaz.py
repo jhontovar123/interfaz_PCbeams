@@ -144,7 +144,7 @@ calculated_param_cla={'bw_D (mm2)': "{:.2f}".format(bw_D),
                   'eta_p': "{:.2f}".format(eta_p),
                   'lambda': "{:.2f}".format(lamb),
                   'rhot_fyt_fc': "{:.2f}".format(rhot_fyt_fc),
-                  'bw/Ac': "{:.2f}".format(bw_Ac)}
+                  'bw/Ac': "{:.7f}".format(bw_Ac)}
 calculated_param_df_cla=pd.DataFrame(calculated_param_cla, index=[0])
 st.subheader('Model Input Parameters for Failure Mode')
 st.table(calculated_param_df_cla)
@@ -168,7 +168,6 @@ m_reg = np.load('mean_scale_reg.npy')
 s_cla = np.load('std_scale_cla_8f.npy')
 m_cla = np.load('mean_scale_cla_8f.npy')
 
-st.write(s_cla)
 reg_sca=pd.DataFrame((reg-m_reg)/s_reg,index=[0])
 cla_sca=pd.DataFrame((cla-m_cla)/s_cla,index=[0])
 
