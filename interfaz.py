@@ -131,7 +131,7 @@ calculated_param_df=pd.DataFrame(calculated_param, index=[0])
 st.subheader('Model Input Parameters for Shear Strength')
 st.table(calculated_param_df)
 #
-#Parameters for regression
+#Parameters for classification
 calculated_param_cla={'bw_D (mm2)': "{:.2f}".format(bw_D),
                   'sq_fc (MPa)': "{:.2f}".format(sq_fc),
                   'fpo/fpu': "{:.2f}".format(fpo_fpu),
@@ -216,3 +216,8 @@ if resultado==5:
    st.image(image_cru)
 if resultado==6:
    st.image(image_web)
+
+
+st.write('V1.01 - Coded by:')
+st.write('Bedriñana, L. A., Sucasaca, J. C. and Tovar, J. P.')
+st.write('Universidad de Ingeniería y Tecnología - Department of Civil Engenerring')
