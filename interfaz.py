@@ -159,8 +159,8 @@ cla=np.array([[bw_D,sq_fc,fpo_fpu,a_deff1,eta_p,lamb,rhot_fyt_fc]])
 s_reg = np.load('std_scale_reg.npy')
 m_reg = np.load('mean_scale_reg.npy')
 
-s_cla = np.load('std_scale_cla_f.npy')
-m_cla = np.load('mean_scale_cla_f.npy')
+s_cla = np.load('std_scale_cla.npy')
+m_cla = np.load('mean_scale_cla.npy')
 
 reg_sca=pd.DataFrame((reg-m_reg)/s_reg,index=[0])
 cla_sca=pd.DataFrame((cla-m_cla)/s_cla,index=[0])
