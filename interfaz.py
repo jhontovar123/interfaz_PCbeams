@@ -159,8 +159,8 @@ cla=np.array([[bw_D,sq_fc,fpo_fpu,a_deff1,eta_p,lamb,rhot_fyt_fc]])
 s_reg = np.load('std_scale_reg.npy')
 m_reg = np.load('mean_scale_reg.npy')
 
-s_cla = np.load('std_scale_cla.npy')
-m_cla = np.load('mean_scale_cla.npy')
+s_cla = np.load('std_scale_cla_8f.npy')
+m_cla = np.load('mean_scale_cla_8f.npy')
 
 reg_sca=pd.DataFrame((reg-m_reg)/s_reg,index=[0])
 cla_sca=pd.DataFrame((cla-m_cla)/s_cla,index=[0])
@@ -217,7 +217,7 @@ if resultado==5:
 if resultado==6:
    st.image(image_web)
 
-
+st.subheader('Reference')
 st.write('V1.01 - Coded by:')
 st.write('Bedriñana, L. A., Sucasaca, J. C. and Tovar, J. P.')
-st.write('Universidad de Ingeniería y Tecnología - Department of Civil Engenerring')
+st.write('Universidad de Ingeniería y Tecnología - Department of Civil Engeneering')
