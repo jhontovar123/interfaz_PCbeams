@@ -43,6 +43,7 @@ st.image(image)
 def user_input_features():
     bw = st.sidebar.slider('bw (mm)', min_value=25, max_value=375, step=10)
     D = st.sidebar.slider('D (mm)', min_value=150, max_value=1600, step=50)
+    Ac = st.sidebar.slider('Ac (mm2)', min_value=10000, max_value=718000, step=1000)
     a_deff = st.sidebar.slider('a/Deff', min_value=0.4, max_value=8.0, step=0.1)
     rho_l = st.sidebar.slider('rho_l', min_value=0.000, max_value=0.2, step=0.001)
     rho_lp = st.sidebar.slider('rho_lp', min_value=0.001, max_value=0.06, step=0.001) 
@@ -57,6 +58,7 @@ def user_input_features():
 
     data = {'bw (mm)': bw,
             'D (mm)': D,
+            'Ac (mm2)':Ac,
             'a/Deff': a_deff,
             'rho_l': rho_l,
             'rho_lp': rho_lp,
@@ -75,6 +77,7 @@ df = user_input_features()
 
 bw1=df['bw (mm)'].values.item()
 D1=df['D (mm)'].values.item()
+Ac1=df['Ac (mm2)'].values.item()
 a_deff1=df['a/Deff'].values.item()
 rho_l1=df['rho_l'].values.item()
 rho_lp1=df['rho_lp'].values.item()
@@ -88,6 +91,7 @@ fpo1=df['fpo (MPa)'].values.item()
 Fpo1=df['Fpo (N)'].values.item()
 
 bw_D=bw1*D1
+bw_Ac=bw1/Ac1
 fc2=fc1
 fpo_fpu=fpo1/fpu1
 a_Deff=a_deff1
@@ -100,6 +104,7 @@ lamb=(rho_lp1*fpy1)/(rho_lp1*fpy1+rho_l1*fy1)
 
 user_input={'bw (mm)': "{:.0f}".format(bw1),
             'D (mm)': "{:.0f}".format(D1),
+            'Ac (mm2)':"{:.0f}".format(Ac1),
             'a/Deff': "{:.0f}".format(a_deff1),
             'rho_l': "{:.2f}".format(rho_l1),
             'rho_lp': "{:.2f}".format(rho_lp1),
@@ -138,7 +143,8 @@ calculated_param_cla={'bw_D (mm2)': "{:.2f}".format(bw_D),
                   'a/Deff': "{:.2f}".format(a_deff1),
                   'eta_p': "{:.2f}".format(eta_p),
                   'lambda': "{:.2f}".format(lamb),
-                  'rhot_fyt_fc': "{:.2f}".format(rhot_fyt_fc)}
+                  'rhot_fyt_fc': "{:.2f}".format(rhot_fyt_fc),
+                  'bw/Ac': "{:.2f}".format(bw_Ac)}
 calculated_param_df_cla=pd.DataFrame(calculated_param_cla, index=[0])
 st.subheader('Model Input Parameters for Failure Mode')
 st.table(calculated_param_df_cla)
@@ -151,10 +157,10 @@ rholp_fpu_fc_log=np.log(rholp_fpu_fc)
 eta_p_log=np.log(eta_p)
 
 var_names_reg = ['bw_D', 'fc', 'fpo/fpu', "a/Deff", 'rhot_fyt/fc', 'rhol_fy/fc', 'rholp_fpu/fc','eta_p']
-var_names_cla = ['bw_D', 'sqrt_fc', 'fpo/fpu', "a/Deff",'eta_p', 'lambda', 'rhot_fyt/fc']
+var_names_cla = ['bw_D', 'sqrt_fc', 'fpo/fpu', "a/Deff",'eta_p', 'lambda', 'rhot_fyt/fc','bw_Ac']
 #Definning input to model predictions
 reg=np.array([[bw_D_log,fc2_log,fpo_fpu,a_deff1_log,rhot_fyt_fc,rhol_fy_fc,rholp_fpu_fc_log,eta_p_log]])
-cla=np.array([[bw_D,sq_fc,fpo_fpu,a_deff1,eta_p,lamb,rhot_fyt_fc]])
+cla=np.array([[bw_D,sq_fc,fpo_fpu,a_deff1,eta_p,lamb,rhot_fyt_fc,bw_Ac]])
 # Escalando los inputs (forma correcta para los inputs)
 s_reg = np.load('std_scale_reg.npy')
 m_reg = np.load('mean_scale_reg.npy')
