@@ -44,7 +44,7 @@ def user_input_features():
     bw = st.sidebar.slider('bw (mm)', min_value=25, max_value=375, step=10)
     D = st.sidebar.slider('D (mm)', min_value=150, max_value=1600, step=50)
     Ac = st.sidebar.slider('Ac (mm2)', min_value=10000, max_value=718000, step=1000)
-    a_deff = st.sidebar.slider('a/Deff', min_value=0.4, max_value=8.0, step=0.1)
+    a_deff = st.sidebar.slider('a/Deff', min_value=0.40, max_value=8.00, step=0.10)
     rho_l = st.sidebar.slider('rho_l', min_value=0.000, max_value=0.200, step=0.001)
     rho_lp = st.sidebar.slider('rho_lp', min_value=0.001, max_value=0.060, step=0.001) 
     rho_t = st.sidebar.slider('rho_t', min_value=0.00, max_value=0.05, step=0.01) 
