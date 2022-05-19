@@ -128,9 +128,9 @@ calculated_param={'bw_D (mm2)': "{:.2f}".format(bw_D),
                   'fc (MPa)': "{:.2f}".format(fc2),
                   'fpo/fpu': "{:.2f}".format(fpo_fpu),
                   'a/Deff': "{:.2f}".format(a_deff1),
-                  'rhot_fyt_fc': "{:.2f}".format(rhot_fyt_fc),
-                  'rhol_fy_fc': "{:.2f}".format(rhol_fy_fc),
-                  'rholp_fpu_fc': "{:.2f}".format(rholp_fpu_fc),
+                  'rhot_f\u02B8\t/fc': "{:.2f}".format(rhot_fyt_fc),
+                  'rhol_fy/fc': "{:.2f}".format(rhol_fy_fc),
+                  'rholp_fpu/fc': "{:.2f}".format(rholp_fpu_fc),
                   'eta_p': "{:.2f}".format(eta_p)}
 calculated_param_df=pd.DataFrame(calculated_param, index=[0])
 st.subheader('Model Input Parameters for Shear Strength')
