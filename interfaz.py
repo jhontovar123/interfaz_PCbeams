@@ -144,7 +144,7 @@ calculated_param_cla={'bw_D (mm2)': "{:.2f}".format(bw_D),
                   'eta_p': "{:.2f}".format(eta_p),
                   'lambda': "{:.2f}".format(lamb),
                   'rhot_fyt_fc': "{:.2f}".format(rhot_fyt_fc),
-                  'bw/Ac x 10\u00B2': "{:.7f}".format(bw_Ac)}
+                  'bw/Ac x 10\u00AF\u00B3': "{:.7f}".format(bw_Ac)}
 calculated_param_df_cla=pd.DataFrame(calculated_param_cla, index=[0])
 st.subheader('Model Input Parameters for Failure Mode')
 st.table(calculated_param_df_cla)
