@@ -138,7 +138,7 @@ st.table(calculated_param_df)
 #
 #Parameters for classification
 calculated_param_cla={'bw_D (mm2)': "{:.2f}".format(bw_D),
-                  'sq_fc (MPa)': "{:.2f}".format(sq_fc),
+                  '\221Afc (\221AMPa)': "{:.2f}".format(sq_fc),
                   'fpo/fpu': "{:.2f}".format(fpo_fpu),
                   'a/Deff': "{:.2f}".format(a_deff1),
                   'eta_p': "{:.2f}".format(eta_p),
