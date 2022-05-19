@@ -102,7 +102,7 @@ eta_p=Fpo1/(bw1*D1*fc1)
 sq_fc=np.sqrt(fc1)
 lamb=(rho_lp1*fpy1)/(rho_lp1*fpy1+rho_l1*fy1)
 
-user_input={'bw (mm)': "{:.0f}".format(bw1),
+user_input={'b\u1D65\u1D65 (mm)': "{:.0f}".format(bw1),
             'D (mm)': "{:.0f}".format(D1),
             'Ac (mm2)':"{:.0f}".format(Ac1),
             'a/Deff': "{:.0f}".format(a_deff1),
