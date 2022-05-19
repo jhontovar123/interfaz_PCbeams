@@ -224,11 +224,9 @@ if resultado==6:
    st.image(image_web)
 
 st.subheader('Nomenclature')
-st.write('V1.01 - Coded by:')
-
-st.subheader('Reference')
 st.write('fpo/fpu is the ultimate effective prestress ratio; rhot_fyt/fc is the transverse reinforcement index; rhol_fy/fc is the passive longitudinal reinforcement index; \
    rholp_fpu/fc is the prestress index; eta_p is the total axial force ratio; lambda is the reinforcement moment ratio')
 
+st.subheader('Reference')
 st.write('Bedriñana, L. A., Sucasaca, J. C. and Tovar, J. P.')
 st.write('Universidad de Ingeniería y Tecnología - Department of Civil Engeneering')
