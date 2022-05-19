@@ -128,7 +128,7 @@ calculated_param={'bw_D (mm2)': "{:.2f}".format(bw_D),
                   'fc (MPa)': "{:.2f}".format(fc2),
                   'fpo/fpu': "{:.2f}".format(fpo_fpu),
                   'a/Deff': "{:.2f}".format(a_deff1),
-                  'rho\u209C_f\u1D67\u209C/fc': "{:.2f}".format(rhot_fyt_fc),
+                  '\u1D70C\u209C_f\u1D67\u209C/fc': "{:.2f}".format(rhot_fyt_fc),
                   'rhol_f\u1D67/fc': "{:.2f}".format(rhol_fy_fc),
                   'rholp_fpu/fc': "{:.2f}".format(rholp_fpu_fc),
                   'eta_p': "{:.2f}".format(eta_p)}
