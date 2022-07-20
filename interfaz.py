@@ -5,7 +5,7 @@ from pickle import load
 import pickle
 import numpy as np
 import math
-import matplotlip
+#import matplotlip
 from PIL import Image
 import os
 from sklearn.preprocessing import StandardScaler
