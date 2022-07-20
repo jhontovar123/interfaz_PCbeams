@@ -105,7 +105,7 @@ lamb=(rho_lp1*fpy1)/(rho_lp1*fpy1+rho_l1*fy1)
 user_input={'bw (mm)': "{:.0f}".format(bw1),
             'D (mm)': "{:.0f}".format(D1),
             'Ac (mm2)':"{:.0f}".format(Ac1),
-            'a/Deff': "{:.0f}".format(a_deff1),
+            'a/Deff': "{:.2f}".format(a_deff1),
             'rho_l': "{:.2f}".format(rho_l1),
             'rho_lp': "{:.2f}".format(rho_lp1),
             'rho_t': "{:.2f}".format(rho_t1),
