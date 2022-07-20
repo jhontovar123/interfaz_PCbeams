@@ -201,7 +201,7 @@ if resultado==6:
 st.subheader('XGBoost Model Predictions')
 st.write('$\\phi$ = Resistance Factor Design')  
 w_cr_results={'Shear Strength (kN)':"{:.2f}".format(V_test),
-               'ϕShear Strength (kN)':"{:.2f}".format(V_test*phi),
+               '$\\phi$ Shear Strength (kN)':"{:.2f}".format(V_test*phi),
                'Failure Mode':format(res)}
 
 w_cr_results_df=pd.DataFrame(w_cr_results, index=[0])
