@@ -201,7 +201,7 @@ st.subheader('XGBoost Model Predictions')
 w_cr_results={'Shear Strength (kN)':"{:.2f}".format(V_test),
                'Failure Mode':format(res),
                'r$\phi$ * Shear Strength':"{:.2f}".format(V_test*phi),
-               'r$\phi$':"{:.2f}".format(phi)}
+               r'$\phi$':"{:.2f}".format(phi)}
 w_cr_results_df=pd.DataFrame(w_cr_results, index=[0])
 st.table(w_cr_results_df)
 
