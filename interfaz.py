@@ -199,7 +199,8 @@ if resultado==6:
    res="Web-shear failure"
 
 st.subheader('XGBoost Model Predictions')
-w_cr_results={'Shear Strength (kN)':"{:.2f}".format(V_test),
+st.write('$\\phi$ = Resistance Factor Design')  
+w_cr_results={'Shear Strength (kN)':"{:.2f}".format(V_test*phi),
                'Failure Mode':format(res)}
 
 #'\phi * Shear Strength':"{:.2f}".format(V_test*phi),
