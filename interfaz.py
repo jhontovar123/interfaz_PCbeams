@@ -36,7 +36,7 @@ st.sidebar.header('User Input Parameters')
 PROJECT_ROOT_DIR_Fig = "."
 OutModel_PATH2 = os.path.join(PROJECT_ROOT_DIR_Fig, "figures_interfaz")
 
-image = Image.open(os.path.join(OutModel_PATH2,'viga.jpg'))
+image = Image.open(os.path.join(OutModel_PATH2,'viga.png'))
 st.image(image)
 
 
