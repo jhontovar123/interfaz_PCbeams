@@ -171,6 +171,9 @@ m_cla = np.load('mean_scale_cla_8f.npy')
 reg_sca=pd.DataFrame((reg-m_reg)/s_reg,index=[0])
 cla_sca=pd.DataFrame((cla-m_cla)/s_cla,index=[0])
 
+#Factor reduction phi
+phi=0.3/(1+np.exp(-150*(rholp_fpu_fc-0.18)))+0.6
+
 ##Regression
 Load_pred_reg=loaded_model_reg.predict(reg_sca).item()
 V_test=np.exp(Load_pred_reg)*np.exp(reg[0,1])*np.exp(reg[0,0])/1000
@@ -196,7 +199,8 @@ if resultado==6:
 
 st.subheader('XGBoost Model Predictions')
 w_cr_results={'Shear Strength (kN)':"{:.2f}".format(V_test),
-               'Failure Mode':format(res)}
+               'Failure Mode':format(res),
+               '\phi * Shear Strength':"{:.2f}".format(V_test*phi)}
 w_cr_results_df=pd.DataFrame(w_cr_results, index=[0])
 st.table(w_cr_results_df)
 
