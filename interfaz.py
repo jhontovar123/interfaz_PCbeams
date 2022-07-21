@@ -54,8 +54,7 @@ def user_input_features():
     fyt = st.sidebar.slider('fyt (MPa)', min_value=0, max_value=900, step=10) 
     fpy = st.sidebar.slider('fpy (MPa)', min_value=600, max_value=4400, step=20) 
     fpu = st.sidebar.slider('fpu (MPa)', min_value=900, max_value=5200, step=20) 
-    fpo = st.sidebar.slider('fpo (MPa)', min_value=20, max_value=1760, step=20) 
-    Fpo = st.sidebar.slider('Fpo (N)', min_value=3700, max_value=10140000, step=1000) 
+    fpo = st.sidebar.slider('fpo (MPa)', min_value=20, max_value=1760, step=20)  
 
     data = {'bw (mm)': bw,
             'D (mm)': D,
@@ -69,8 +68,7 @@ def user_input_features():
             'fyt (MPa)': fyt,
             'fpy (MPa)': fpy,
             'fpu (MPa)': fpu, 
-            'fpo (MPa)': fpo,
-            'Fpo (N)': Fpo}                       
+            'fpo (MPa)': fpo}                      
     features = pd.DataFrame(data, index=[0])
     return features
 
@@ -89,7 +87,6 @@ fyt1=df['fyt (MPa)'].values.item()
 fpy1=df['fpy (MPa)'].values.item()
 fpu1=df['fpu (MPa)'].values.item()
 fpo1=df['fpo (MPa)'].values.item()
-Fpo1=df['Fpo (N)'].values.item()
 
 bw_D=bw1*D1
 bw_Ac=bw1/Ac1
@@ -99,7 +96,9 @@ a_Deff=a_deff1
 rhol_fy_fc = rho_l1*fy1/fc1
 rholp_fpu_fc=rho_lp1*fpu1/fc1
 rhot_fyt_fc=rho_t1*fyt1/fc1
-eta_p=Fpo1/(bw1*D1*fc1)
+Ap=rho_lp1*bw1*D1
+Fpo=Ap*fpo1
+eta_p=Fpo/(bw1*D1*fc1)
 sq_fc=np.sqrt(fc1)
 lamb=(rho_lp1*fpy1)/(rho_lp1*fpy1+rho_l1*fy1)
 
@@ -115,8 +114,7 @@ user_input={'bw (mm)': "{:.0f}".format(bw1),
             'fyt (MPa)': "{:.0f}".format(fyt1),
             'fpy (MPa)': "{:.0f}".format(fpy1),
             'fpu (MPa)': "{:.0f}".format(fpu1),
-            'fpo (MPa)': "{:.0f}".format(fpo1),
-			'Fpo (N)': "{:.0f}".format(Fpo1)}
+            'fpo (MPa)': "{:.0f}".format(fpo1)}
 
 user_input_df=pd.DataFrame(user_input, index=[0])
 st.subheader('User Input Parameters')
