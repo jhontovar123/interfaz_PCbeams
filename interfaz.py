@@ -42,6 +42,7 @@ st.image(image)
 
 
 def user_input_features():
+    prueba1=st.number_input('Insert a number',min_value=100,max_value=1000,value=200,step=50)
     bw = st.sidebar.slider('bw (mm)', min_value=25, max_value=375, step=10)
     D = st.sidebar.slider('D (mm)', min_value=150, max_value=1600, step=50)
     Ac = st.sidebar.slider('Ac (mm2)', min_value=10000, max_value=718000, step=1000)
