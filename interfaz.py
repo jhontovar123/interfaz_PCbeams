@@ -30,7 +30,7 @@ with open(model_file, 'rb') as f:
     loaded_model_cla = pickle.load(f)
 
 
-st.title('Shear strength and Failure mode of Prestressed Concrete Beams Predicted by ML Methods')
+st.title('PCbeam_Bot: ML model for the shear design of Prestressed concrete beams')
 st.subheader('Dimensional Parameters')
 st.sidebar.header('User Input Parameters')
 
