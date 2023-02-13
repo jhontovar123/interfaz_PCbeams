@@ -236,4 +236,5 @@ st.write('fpo/fpu is the ultimate effective prestress ratio; rhot_fyt/fc is the 
 st.subheader('Reference')
 st.write('When usingn this app in your own work, please use the following citation:')
 st.write('Bedriñana, L. A., J. Sucasaca, J. Tovar, and H. Burton. 2023. “Design-Oriented Machine-Learning Models for Predicting the Shear Strength of Prestressed Concrete Beams.” J. Bridg. Eng., 28 (4): 04023009. https://doi.org/10.1061/JBENF2.BEENG-6013.')
-st.write('Universidad de Ingeniería y Tecnología - Department of Civil Engeneering')
+st.write('Universidad de Ingenieria y Tecnologia - UTEC')
+st.write('Department of Civil Engeneering')
