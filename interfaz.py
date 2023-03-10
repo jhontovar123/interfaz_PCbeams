@@ -230,11 +230,11 @@ if resultado==6:
    st.image(image_web)
 
 st.subheader('Nomenclature')
-st.write('*fpo/fpu* is the ultimate effective prestress ratio; rhot_fyt/fc is the transverse reinforcement index; rhol_fy/fc is the passive longitudinal reinforcement index; \
-   rholp_fpu/fc is the prestress index; eta_p is the total axial force ratio; lambda is the reinforcement moment ratio; bw is the web width; D is the total depth; Ac is the section area; \
-   a/Deff is the shear span-to-depth ratio; rho_l is the longitudinal reinforcement ratio; rho_lp is the prestressing reinforcement ratio; rho_t is the transverse reinforcement ratio; \
-   fc is the concrete strength, fy is the yield strength of longitudinal reinforcement; fyt is the yield strength of transverse reinforcement; fpy is the yield strength of prestressing tendons; \
-   fpu is the tensile strength of the tendons; fpo is the actual prestress after all losses.')
+st.write('*fpo/fpu* is the ultimate effective prestress ratio; *rhot_fyt/fc* is the transverse reinforcement index; *rhol_fy/fc* is the passive longitudinal reinforcement index; \
+   *rholp_fpu/fc* is the prestress index; *eta_p* is the total axial force ratio; *lambda* is the reinforcement moment ratio; *bw* is the web width; *D* is the total depth; *Ac* is the section area; \
+   *a/Deff* is the shear span-to-depth ratio; *rho_l* is the longitudinal reinforcement ratio; *rho_lp* is the prestressing reinforcement ratio; *rho_t* is the transverse reinforcement ratio; \
+   *fc* is the concrete strength, *fy* is the yield strength of longitudinal reinforcement; *fyt* is the yield strength of transverse reinforcement; *fpy* is the yield strength of prestressing tendons; \
+   *fpu* is the tensile strength of the tendons; *fpo* is the actual prestress after all losses.')
 
 st.subheader('Reference')
 st.write('When usingn this app in your own work, please use the following citation:')
