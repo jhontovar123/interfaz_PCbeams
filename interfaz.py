@@ -14,8 +14,6 @@ from sklearn.preprocessing import StandardScaler
 #Indication to run interfaz in a localhost
 #1 open the terminal cmd and change root direcory to file directory
 #2 write this: streamlit run interfaz.py --server.port=9876
-
-@st.cache
 PROJECT_ROOT_DIR = "."
 OutModel_PATH = os.path.join(PROJECT_ROOT_DIR, "model_output")
 
