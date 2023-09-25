@@ -1,1 +1,1 @@
-web: sh setup.sh && streamlit run interfaz.py
+web: sh setup.sh && streamlit run PC_Beams_GUI.py
