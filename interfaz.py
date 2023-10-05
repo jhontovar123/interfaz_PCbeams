@@ -18,12 +18,12 @@ PROJECT_ROOT_DIR = "."
 OutModel_PATH = os.path.join(PROJECT_ROOT_DIR, "model_output")
 
 #Recovering regression model
-model_file = os.path.join(OutModel_PATH, "final_model_PCbeams.pkl")
+model_file = os.path.join(OutModel_PATH, "final_model_PCbeams-041023-actualized.pkl")
 with open(model_file, 'rb') as f:
     loaded_model_reg = pickle.load(f)
 
 #Recovering classifcation model
-model_file = os.path.join(OutModel_PATH, "final_model_PCbeams_class_8f.pkl")
+model_file = os.path.join(OutModel_PATH, "final_model_PCbeams_class_041023-actualized.pkl")
 with open(model_file, 'rb') as f:
     loaded_model_cla = pickle.load(f)
 
@@ -160,11 +160,11 @@ var_names_cla = ['bw_D', 'sqrt_fc', 'fpo/fpu', "a/Deff",'eta_p', 'lambda', 'rhot
 reg=np.array([[bw_D_log,fc2_log,fpo_fpu,a_deff1_log,rhot_fyt_fc,rhol_fy_fc,rholp_fpu_fc_log,eta_p_log]])
 cla=np.array([[bw_D,sq_fc,fpo_fpu,a_deff1,eta_p,lamb,rhot_fyt_fc,bw_Ac]])
 # Escalando los inputs (forma correcta para los inputs)
-s_reg = np.load('std_scale_reg.npy')
-m_reg = np.load('mean_scale_reg.npy')
+s_reg = np.load('std_scale_reg_041023-actualized.npy')
+m_reg = np.load('mean_scale_reg_041023-actualized.npy')
 
-s_cla = np.load('std_scale_cla_8f.npy')
-m_cla = np.load('mean_scale_cla_8f.npy')
+s_cla = np.load('std_scale_cla_041023-actualized.npy')
+m_cla = np.load('mean_scale_cla_041023-actualized.npy')
 
 reg_sca=pd.DataFrame((reg-m_reg)/s_reg,index=[0])
 cla_sca=pd.DataFrame((cla-m_cla)/s_cla,index=[0])
@@ -173,11 +173,11 @@ cla_sca=pd.DataFrame((cla-m_cla)/s_cla,index=[0])
 phi=0.3/(1+np.exp(-150*(rholp_fpu_fc-0.18)))+0.6
 
 ##Regression
-Load_pred_reg=loaded_model_reg.predict(reg_sca).item()
+Load_pred_reg=loaded_model_reg.predict(reg_sca.values).item()
 V_test=np.exp(Load_pred_reg)*np.exp(reg[0,1])*np.exp(reg[0,0])/1000
 
 ##Classification  
-Load_pred_cla=loaded_model_cla.predict(cla_sca).item()
+Load_pred_cla=loaded_model_cla.predict(cla_sca.values).item()
 resultado=Load_pred_cla
 res=str()
 if resultado==0:
